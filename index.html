@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f6f4ee">
+  <meta name="description" content="Malfoy là Agent tổng hợp video thành bản tin tiếng Việt có nguồn, giới hạn thời gian và nhãn xác minh rõ ràng.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Malfoy — Trợ lý tổng hợp video">
+  <meta property="og:description" content="Từ video mới đến bản tin tiếng Việt có nguồn và giới hạn xác minh minh bạch.">
+  <title>Malfoy — Trợ lý tổng hợp video</title>
+  <style>
+    :root { color-scheme: light; --paper:#f6f4ee; --ink:#172b2b; --muted:#536767; --line:#d9dfd7; --card:#fffefa; --forest:#174c42; --mint:#cce8d9; --lime:#d8ef9c; --amber:#f2c56f; --blue:#d8e8f5; --shadow:0 18px 50px rgba(23,43,43,.08); }
+    * { box-sizing:border-box; } html { scroll-behavior:smooth; }
+    body { margin:0; background:radial-gradient(ellipse at 80% -10%,rgba(204,232,217,.75),transparent 34rem),var(--paper); color:var(--ink); font:16px/1.65 ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif; }
+    a { color:var(--forest); text-underline-offset:.18em; } a:hover { text-decoration-thickness:2px; }
+    .wrap { width:min(1120px,calc(100% - 40px)); margin:0 auto; }
+    .topbar { display:flex; justify-content:space-between; align-items:center; padding:22px 0; border-bottom:1px solid var(--line); }
+    .brand { display:flex; align-items:center; gap:11px; color:var(--ink); text-decoration:none; font-weight:800; letter-spacing:-.03em; }
+    .mark { width:36px; height:36px; border-radius:12px; background:var(--forest); display:grid; place-items:center; color:var(--lime); font-weight:900; }
+    nav { display:flex; gap:24px; font-size:.92rem; } nav a { color:var(--muted); text-decoration:none; } nav a:hover { color:var(--forest); }
+    .hero { padding:78px 0 62px; display:grid; grid-template-columns:1.2fr .8fr; align-items:center; gap:52px; }
+    .eyebrow { color:var(--forest); font-size:.76rem; font-weight:800; text-transform:uppercase; letter-spacing:.16em; }
+    h1 { max-width:760px; margin:14px 0 20px; font-size:clamp(3rem,8vw,6.5rem); line-height:.96; letter-spacing:-.075em; }
+    .hero p { max-width:670px; color:var(--muted); font-size:clamp(1.08rem,2vw,1.28rem); }
+    .actions { display:flex; gap:12px; flex-wrap:wrap; margin-top:28px; }
+    .button { display:inline-flex; align-items:center; justify-content:center; border-radius:999px; padding:11px 18px; font-weight:750; text-decoration:none; border:1px solid var(--forest); }
+    .button.primary { background:var(--forest); color:white; } .button.secondary { color:var(--forest); background:transparent; }
+    .visual { min-height:355px; position:relative; overflow:hidden; border-radius:32px; background:var(--forest); box-shadow:var(--shadow); padding:28px; color:#fff; }
+    .visual::before,.visual::after { content:""; position:absolute; border-radius:50%; }
+    .visual::before { width:255px; height:255px; right:-55px; top:-68px; background:var(--lime); } .visual::after { width:170px; height:170px; left:-56px; bottom:-62px; background:var(--amber); }
+    .brief { position:relative; z-index:1; margin-top:78px; padding:22px; border-radius:20px; background:rgba(255,254,250,.96); color:var(--ink); }
+    .brief-head { display:flex; justify-content:space-between; align-items:center; gap:16px; font-weight:800; }
+    .tag { font-size:.75rem; color:var(--forest); background:var(--mint); padding:4px 9px; border-radius:999px; white-space:nowrap; }
+    .brief-line { height:8px; border-radius:9px; margin-top:14px; background:#e5e9e2; } .brief-line.short { width:68%; } .brief-line.mid { width:84%; }
+    .brief-foot { color:var(--muted); font-size:.85rem; margin-top:18px; }
+    .stat-row { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin:4px 0 76px; }
+    .stat { background:rgba(255,254,250,.75); border:1px solid var(--line); border-radius:18px; padding:18px 20px; }
+    .stat strong { display:block; font-size:1.18rem; letter-spacing:-.025em; } .stat span { color:var(--muted); font-size:.88rem; }
+    section { scroll-margin-top:24px; } .section-head { display:flex; justify-content:space-between; gap:30px; align-items:end; margin-bottom:22px; }
+    .section-head h2 { margin:0; font-size:clamp(1.8rem,4vw,3rem); line-height:1.05; letter-spacing:-.055em; } .section-head p { max-width:460px; margin:0; color:var(--muted); }
+    .steps { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; } .step,.panel { background:var(--card); border:1px solid var(--line); border-radius:22px; padding:22px; }
+    .step-no { color:var(--forest); font-weight:850; font-size:.8rem; letter-spacing:.12em; } .step h3 { margin:12px 0 7px; font-size:1.08rem; }
+    .step p,.panel p,.panel li { color:var(--muted); margin-bottom:0; } .two-col { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:76px; }
+    .panel h2 { margin:0 0 12px; font-size:1.45rem; letter-spacing:-.035em; } .panel ul { padding-left:1.2rem; margin:10px 0 0; } .panel li+li { margin-top:7px; }
+    .topic { display:inline-block; margin:4px 6px 0 0; border-radius:999px; padding:5px 11px; background:var(--blue); color:#244a5f; font-size:.83rem; font-weight:700; }
+    .example { margin-top:76px; padding:32px; border-radius:28px; background:#e8eee5; } .example .section-head { margin-bottom:16px; }
+    .sample { background:var(--card); border:1px solid var(--line); border-radius:20px; padding:24px; display:grid; grid-template-columns:.7fr 1.3fr; gap:24px; }
+    .sample-label { color:var(--muted); font-size:.88rem; } .sample h3 { margin:5px 0 8px; font-size:1.25rem; } .sample p { color:var(--muted); margin:7px 0; }
+    .sample ul { padding-left:1.1rem; margin:8px 0; } .sample li+li { margin-top:8px; } .notice { margin-top:18px; color:var(--muted); font-size:.88rem; }
+    .boundary { margin:76px 0 0; } .boundary-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; } .boundary .panel { min-height:185px; }
+    .boundary .panel:nth-child(1) { border-top:4px solid var(--forest); } .boundary .panel:nth-child(2) { border-top:4px solid #c78c27; } .boundary .panel:nth-child(3) { border-top:4px solid #5983a0; }
+    .privacy { display:flex; gap:20px; align-items:flex-start; margin:76px 0; padding:24px; border-radius:20px; background:var(--ink); color:white; }
+    .privacy-badge { flex:0 0 auto; width:42px; height:42px; border-radius:14px; background:var(--lime); color:var(--forest); display:grid; place-items:center; font-weight:900; }
+    .privacy h2 { margin:0 0 5px; font-size:1.2rem; } .privacy p { margin:0; color:#cfdbd4; }
+    footer { border-top:1px solid var(--line); padding:24px 0 36px; color:var(--muted); font-size:.88rem; }
+    .skip { position:absolute; left:-9999px; } .skip:focus { left:16px; top:16px; z-index:5; padding:10px; background:white; }
+    @media(max-width:820px) { .hero { grid-template-columns:1fr; gap:26px; padding-top:58px; } .visual { min-height:300px; } .steps { grid-template-columns:repeat(2,1fr); } .boundary-grid { grid-template-columns:1fr; } .sample { grid-template-columns:1fr; gap:10px; } }
+    @media(max-width:560px) { .wrap { width:min(100% - 28px,1120px); } nav { gap:12px; font-size:.8rem; } .stat-row { grid-template-columns:1fr; margin-bottom:56px; } .steps,.two-col { grid-template-columns:1fr; } .two-col,.example,.boundary { margin-top:56px; } .example { padding:20px; } .privacy { margin:56px 0; } }
+    @media(prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#main">Bỏ qua điều hướng</a>
+  <header class="wrap topbar">
+    <a class="brand" href="#top" aria-label="Malfoy, về đầu trang"><span class="mark" aria-hidden="true">M</span><span>Malfoy</span></a>
+    <nav aria-label="Điều hướng chính"><a href="#workflow">Quy trình</a><a href="#example">Ví dụ</a><a href="#limits">Giới hạn</a></nav>
+  </header>
+  <main id="main" class="wrap">
+    <section id="top" class="hero"><div><div class="eyebrow">AI Agent · bản trình bày tĩnh</div><h1>Từ video<br>thành bản tin.</h1><p>Malfoy giúp sàng lọc video về Liên Quân Mobile và tin thế giới, rồi tạo tóm tắt tiếng Việt có nguồn đối chiếu và ghi chú rõ điều chưa xác minh.</p><div class="actions"><a class="button primary" href="#workflow">Xem cách hoạt động</a><a class="button secondary" href="#example">Xem ví dụ đã thử</a></div></div>
+      <div class="visual" aria-hidden="true"><div class="brief"><div class="brief-head"><span>Bản tin video</span><span class="tag">Nguồn có dẫn</span></div><div class="brief-line mid"></div><div class="brief-line"></div><div class="brief-line short"></div><div class="brief-foot">Tóm tắt · đối chiếu · mức độ chắc chắn</div></div></div>
+    </section>
+    <div class="stat-row" aria-label="Thông số chính"><div class="stat"><strong>3 ngày gần nhất</strong><span>Khung thời gian ưu tiên</span></div><div class="stat"><strong>Tối đa 3 + 5 mục</strong><span>Liên Quân + tin thế giới</span></div><div class="stat"><strong>08:00 UTC+07</strong><span>Lịch bản tin đã cấu hình</span></div></div>
+    <section id="workflow"><div class="section-head"><h2>Quy trình rõ ràng,<br>đầu ra dễ kiểm tra.</h2><p>Agent giữ riêng nội dung video, dữ kiện được đối chiếu và phần còn chưa chắc chắn để người đọc không nhầm tóm tắt với xác nhận.</p></div><div class="steps">
+      <article class="step"><div class="step-no">01 · TÌM</div><h3>Chọn video phù hợp</h3><p>Tìm theo chủ đề và ưu tiên video mới từ kênh phù hợp.</p></article>
+      <article class="step"><div class="step-no">02 · LỌC</div><h3>Kiểm tra thời gian</h3><p>Đối chiếu ngày đăng và ngày sự kiện nếu xác định được.</p></article>
+      <article class="step"><div class="step-no">03 · ĐỐI CHIẾU</div><h3>Gắn nguồn cho ý chính</h3><p>Tách thông tin có nguồn xác nhận khỏi tuyên bố chưa được xác minh.</p></article>
+      <article class="step"><div class="step-no">04 · TÓM TẮT</div><h3>Viết tiếng Việt</h3><p>Thêm link video và ghi chú transcript nếu âm thanh hoặc bản chép lời không đáng tin.</p></article>
+    </div></section>
+    <div class="two-col"><section class="panel"><h2>Chủ đề và đầu ra</h2><p>Malfoy được cấu hình để tạo bản tin riêng, không đăng nội dung ra ngoài cuộc trò chuyện.</p><div style="margin-top:14px"><span class="topic">Liên Quân Mobile</span><span class="topic">Tin thế giới</span><span class="topic">YouTube</span><span class="topic">TikTok</span></div><ul><li>Tiêu đề, kênh, ngày đăng và link video.</li><li>Tóm tắt tiếng Việt kèm nguồn đối chiếu.</li><li>Nhãn “Chưa xác minh” và ghi chú về transcript khi cần.</li></ul></section>
+      <section class="panel"><h2>Quy tắc lựa chọn</h2><ul><li>Tối đa 3 tin Liên Quân và 5 tin thế giới mỗi ngày.</li><li>Thiếu tin đạt tiêu chí thì gửi ít hơn; không dùng tin cũ để lấp chỗ trống.</li><li>Lượt thích hoặc chia sẻ biểu thị độ phổ biến, không chứng minh thông tin đúng.</li><li>Lịch dự kiến là 08:00 giờ UTC+07; việc nhận tin phụ thuộc máy và Hermes Gateway đang hoạt động.</li></ul></section></div>
+    <section id="example" class="example"><div class="section-head"><h2>Một ví dụ từ<br>bài thử thực tế.</h2><p>Video ngắn về CT UAV được Malfoy tóm tắt bằng cách phân biệt thông tin có nguồn với phép so sánh chưa được chứng minh.</p></div><div class="sample">
+      <div><div class="sample-label">CỦ ĐẬU STORY · 01/11/2026</div><h3>Video về CT UAV</h3><p><a href="https://www.youtube.com/shorts/TStAb9rGh8U" target="_blank" rel="noopener noreferrer">Mở video trên YouTube ↗</a></p></div>
+      <div><ul><li><strong>Đã đối chiếu:</strong> CT UAV ghi URS cấp chứng nhận ISO 9001:2015 cho hệ thống sản xuất ngày 22/10/2026.</li><li><strong>Chưa xác minh:</strong> thông tin từ video không chứng minh phép so sánh về năng lực sản phẩm với Đức và Nhật.</li><li><strong>Transcript:</strong> bài thử ghi “Không có bản chép lời đáng tin”.</li></ul><p class="sample-label">Nguồn: <a href="https://ctuav.global/ct-uav-quyet-khong-thua-duc-nhat/" target="_blank" rel="noopener noreferrer">thông báo CT UAV ↗</a>. Mẫu rút gọn từ bài thử ngày 05/11/2026; không phải bản tin trực tiếp.</p></div>
+    </div></section>
+    <section id="limits" class="boundary"><div class="section-head"><h2>Minh bạch về<br>giới hạn năng lực.</h2><p>Malfoy hỗ trợ sàng lọc và tổng hợp. Người đọc vẫn cần mở nguồn gốc khi quyết định phụ thuộc vào độ chính xác.</p></div><div class="boundary-grid">
+      <article class="panel"><h2>Nguồn có thể thiếu</h2><p>Có ngày không tìm thấy video đủ mới hoặc đủ phù hợp. Kết quả có thể ít mục hoặc rỗng.</p></article><article class="panel"><h2>Transcript có thể sai</h2><p>Âm thanh không rõ hoặc nhận dạng lời nói kém thì không đoán lời thoại; kết quả phải nêu rõ hạn chế.</p></article><article class="panel"><h2>Không thay thế kiểm chứng</h2><p>Nhãn nguồn cho biết căn cứ của từng ý; một nguồn đơn lẻ không xác nhận mọi chi tiết trong video.</p></article>
+    </div></section>
+    <aside class="privacy"><div class="privacy-badge" aria-hidden="true">i</div><div><h2>Chỉ để xem, không kết nối Agent</h2><p>Đây là trang tĩnh, không có ô chat, không gọi API, không chứa lịch sử trò chuyện hoặc thông tin xác thực. Khách truy cập không thể kích hoạt Malfoy từ trang này.</p></div></aside>
+  </main>
+  <footer class="wrap">Malfoy · Bản trình bày về Agent tổng hợp video. Nội dung ví dụ được ghi rõ nguồn và ngày; lịch chạy tự động phụ thuộc môi trường của người vận hành.</footer>
+</body>
+</html>
